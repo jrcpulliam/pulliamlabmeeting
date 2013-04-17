@@ -29,16 +29,34 @@ read.fun <- function(fn1,fn2){
   # Open file 2 for reading
   cc <- file(fn2,"rb")  
   
+  # browser()
   repeat{
     temp <- sapply(1:length(cnames),function(ii){
       
       if(grepl("char",ctypes[ii])){
-        len <- as.numeric(strsplit(ctypes[1],"character")[[1]][2])
+        len <- as.numeric(strsplit(ctypes[ii],"character")[[1]][2])
         leido <- readChar(cc,len)
         require(stringr)
         leido <- str_trim(leido)
-      }else{    
-        leido <- readBin(cc,what=ctypes[ii]) 
+      }else{
+        options <- c("numeric", "double", "int", "logical", "complex", "raw")
+        if(any(c(options,"integer")==ctypes[ii])){
+          leido <- readBin(cc,what=ctypes[ii]) 
+        }else{
+          if(grepl("integer",ctypes[ii])){
+            len <- as.numeric(strsplit(ctypes[ii],"integer")[[1]][2])
+            thing <- replicate(len,readBin(cc,what="integer"))
+            leido <- paste(thing,collapse=" ")
+          }else{
+            use.mode <- options[sapply(options,function(mm){grepl(mm,ctypes[2])})]
+            if(sum(use.mode)!=1){
+              warning("Unknown data type (mode) specified in first file.")
+            }
+            len <- as.numeric(strsplit(ctypes[ii],use.mode)[[1]][2])
+            thing <- replicate(len,readBin(cc,what=use.mode))
+            leido <- paste(thing,collapse=" ")
+          }
+        }
       }
       return(leido)
     })
@@ -60,4 +78,6 @@ read.fun <- function(fn1,fn2){
   return(dat) 
 }
 
-output <- read.fun("testHeads.o","testbin.o")
+test1 <- read.fun("testHeads.o","testbin.o")
+test2 <- read.fun("testHeadsJP.o","testbin.o")
+
