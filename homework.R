@@ -34,10 +34,14 @@ read.fun <- function(fn1,fn2){
     temp <- sapply(1:length(cnames),function(ii){
       
       if(grepl("char",ctypes[ii])){
-        len <- as.numeric(strsplit(ctypes[ii],"character")[[1]][2])
-        leido <- readChar(cc,len)
-        require(stringr)
-        leido <- str_trim(leido)
+        if(ctypes[ii]=="character"){
+          leido <- readChar(cc,1)
+        }else{
+          len <- as.numeric(strsplit(ctypes[ii],"character")[[1]][2])
+          leido <- readChar(cc,len)
+          require(stringr)
+          leido <- str_trim(leido)
+        }
       }else{
         options <- c("numeric", "double", "int", "logical", "complex", "raw")
         if(any(c(options,"integer")==ctypes[ii])){
