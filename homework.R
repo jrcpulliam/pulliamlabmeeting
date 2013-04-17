@@ -12,7 +12,7 @@
 # no specific mimetype (aka, extension). single space between columns, newline between rows 
 # - The second file will be binary data, no specific mimetype.
 
-# NOTE that the package stringr is used is any of the data are character strings. To install the package, run
+# NOTE that the package stringr is used if any of the data are character strings. To install the package, run
 # the following line:
 # install.packages(stringr)
 
