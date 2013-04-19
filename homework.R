@@ -52,8 +52,9 @@ read.fun <- function(fn1,fn2){
             thing <- replicate(len,readBin(cc,what="integer"))
             leido <- paste(thing,collapse=" ")
           }else{
-            use.mode <- options[sapply(options,function(mm){grepl(mm,ctypes[2])})]
-            if(sum(use.mode)!=1){
+            mode.tf <- sapply(options,function(mm){grepl(mm,ctypes[ii])})
+            use.mode <- options[mode.tf]
+            if(sum(mode.tf)!=1){
               warning("Unknown data type (mode) specified in first file.")
             }
             len <- as.numeric(strsplit(ctypes[ii],use.mode)[[1]][2])
@@ -83,5 +84,5 @@ read.fun <- function(fn1,fn2){
 }
 
 test1 <- read.fun("testHeads.o","testbin.o")
-test2 <- read.fun("testHeadsJP.o","testbin.o")
+# test2 <- read.fun("testHeadsJP.o","testbin.o")
 
