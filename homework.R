@@ -29,7 +29,7 @@ read.fun <- function(fn1,fn2){
   # Open file 2 for reading
   cc <- file(fn2,"rb")  
   
-  # browser()
+  browser()
   repeat{
     temp <- sapply(1:length(cnames),function(ii){
       
@@ -74,8 +74,9 @@ read.fun <- function(fn1,fn2){
       
       dat <- suppressWarnings(data.frame(dat))
       names(dat) <- cnames
-      
+
       break      
+      
     }
   }
   
@@ -83,6 +84,8 @@ read.fun <- function(fn1,fn2){
   return(dat) 
 }
 
-test1 <- read.fun("testHeads.o","testbin.o")
-# test2 <- read.fun("testHeadsJP.o","testbin.o")
+test1 <- read.fun("OLD/testHeads.o","OLD/testbin.o")
+test2 <- read.fun("testHeadsJP.o","OLD/testbin.o")
 
+test <- read.fun("testHeads.o","testbin.o")
+# test <- read.fun("https://github.com/pearsonca/pulliam-lab-hw/blob/master/testHeads.o?raw=true","https://github.com/pearsonca/pulliam-lab-hw/blob/master/testbin.o?raw=true")
