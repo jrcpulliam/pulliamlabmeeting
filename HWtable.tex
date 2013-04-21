@@ -1,0 +1,73 @@
+\documentclass{article}
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{setspace}
+
+\usepackage{Sweave}
+\begin{document}
+\input{HWtable-concordance}
+
+
+\begin{Schunk}
+\begin{Sinput}
+> print(dat)
+\end{Sinput}
+\begin{Soutput}
+              Name       Date Classy Score 1 Score 2 Score 3 Score 4 Score 5
+6        O Saucedo 1976-03-05   TRUE   0.181   0.960   0.082   0.278   0.086
+9        B Borgert 1983-01-11   TRUE   0.160   0.979   0.406   0.766   0.406
+3   Theodore Bones 1984-09-02   TRUE   0.803   0.295   0.258   0.220   0.578
+1      CAB Pearson 1988-11-30  FALSE   0.269   0.168   0.091   0.913   0.849
+10        D Hayman 1999-08-10  FALSE   0.296   0.259   0.498   0.409   0.555
+7           B Dhar 2004-05-29   TRUE   0.534   0.555   0.200   0.386   0.994
+2      JRC Pulliam 2004-08-31   TRUE   0.720   0.652   0.339   0.723   0.067
+5        J Rowland 2007-03-07   TRUE   0.175   0.345   0.427   0.002   0.525
+4           J Lord 2013-04-14  FALSE   0.123   0.201   0.188   0.594   0.323
+8  L Trimmer-Smith       <NA>   TRUE   0.828   0.935   0.806   0.011   0.744
+   Mean Score
+6       0.318
+9       0.543
+3       0.431
+1       0.458
+10      0.403
+7       0.534
+2       0.501
+5       0.295
+4       0.286
+8       0.665
+\end{Soutput}
+\end{Schunk}
+
+\begin{spacing}{1.5}
+%\setlength{\extrarowheight}{6pt}
+\begin{longtable}[l]{@{\extracolsep{\fill}}|c|c|c|c|c|c|c|c|c|}
+\caption[Homework for Pulliam Lab Meeting.]{\ {\sc Homework for Pulliam Lab Meeting.}}\label{tab:tab1}\\
+\hline
+\endfirsthead
+\caption[]{{continued}}\\
+\hline
+{\bf Name} & {\bf Date} & {\bf Classy?} & \multicolumn{5}{|c|}{\sl\bf Scores} & {\bf Mean Score}\\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+{\bf Name} & {\bf Date} & {\bf Classy?} & \multicolumn{5}{c|}{\sl\bf Scores} & {\bf Mean Score}\\
+\hline
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+[1] "1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9"\\
+\hline
+%row 2, entry 1 & row 2, entry 2\footnote{Note that footnotes can be used within the longtable environment (but not in tables created using the tabular environment.}\\
+\end{longtable}
+\end{spacing}
+
+\end{document}

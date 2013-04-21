@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{setspace}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<echo=FALSE>>=
+source("homework.R")
+temp <- strsplit(as.character(test$Scores)," ")
+scores <- matrix(as.numeric(unlist(temp)),length(temp))
+dat <- data.frame(test$Name,test$date,test$Classy,round(scores,3),round(apply(scores,1,mean),3))
+sc <- grepl("X",names(dat))
+names(dat)[1:3] <- c("Name","Date","Classy")
+names(dat)[sc] <- paste("Score",1:sum(sc))
+names(dat)[dim(dat)[2]] <- "Mean Score"
+dat <- dat[order(dat$Date),]
+@
+
+<<>>=
+print(dat)
+@
+
+\begin{spacing}{1.5}
+%\setlength{\extrarowheight}{6pt}
+\begin{longtable}[l]{@{\extracolsep{\fill}}|c|c|c|c|c|c|c|c|c|}
+\caption[Homework for Pulliam Lab Meeting.]{\ {\sc Homework for Pulliam Lab Meeting.}}\label{tab:tab1}\\
+\hline
+\endfirsthead
+\caption[]{{continued}}\\
+\hline
+{\bf Name} & {\bf Date} & {\bf Classy?} & \multicolumn{5}{|c|}{\sl\bf Scores} & {\bf Mean Score}\\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+{\bf Name} & {\bf Date} & {\bf Classy?} & \multicolumn{5}{c|}{\sl\bf Scores} & {\bf Mean Score}\\
+\hline
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+d & d & d & e & e & e & e & e & d\\
+<<echo=FALSE,results=tex>>=
+print(paste(1:9,collapse=" & "))
+@
+\\
+\hline
+%row 2, entry 1 & row 2, entry 2\footnote{Note that footnotes can be used within the longtable environment (but not in tables created using the tabular environment.}\\
+\end{longtable}
+\end{spacing}
+
+\end{document}

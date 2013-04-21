@@ -29,7 +29,7 @@ read.fun <- function(fn1,fn2){
   # Open file 2 for reading
   cc <- file(fn2,"rb")  
   
-  browser()
+  # browser()
   repeat{
     temp <- sapply(1:length(cnames),function(ii){
       
@@ -74,7 +74,7 @@ read.fun <- function(fn1,fn2){
       
       dat <- suppressWarnings(data.frame(dat))
       names(dat) <- cnames
-
+      
       break      
       
     }
@@ -89,3 +89,16 @@ test2 <- read.fun("testHeadsJP.o","OLD/testbin.o")
 
 test <- read.fun("testHeads.o","testbin.o")
 # test <- read.fun("https://github.com/pearsonca/pulliam-lab-hw/blob/master/testHeads.o?raw=true","https://github.com/pearsonca/pulliam-lab-hw/blob/master/testbin.o?raw=true")
+
+test$date <- as.Date(as.character(test[,2]),format=c("%d %m %Y"))
+
+test[order(test$date),]
+
+pdf("HWfile.pdf")
+{
+  plot(NA,NA,xaxt="n",xlim=c(0,1),ylim=c(0,1),lwd=NA,yaxt="n",ylab="",xlab="",col="white",bty="n")
+  text(0,0.5,paste(as.character(test[,1]),collapse="\n "),xpd=T)
+  text(.4,0.5,paste(as.character(test[,2]),collapse="\n "),xpd=T)
+  text(.6,0.5,paste(as.character(test[,3]),collapse="\n "),xpd=T)
+}
+dev.off()
