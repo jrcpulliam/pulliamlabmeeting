@@ -1,0 +1,30 @@
+\documentclass[14pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{}
+\author{}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+% 1/(1+exp(-(a*x+b)))
+$$
+f_1(x) = \frac{1}{1+e^{-(ax+b)}}
+$$
+
+%  exp(-((x-a)/b)^2/2)/(b*sqrt(2*pi))
+$$
+f_2(x) = \frac{1}{b \sqrt{2\pi}}e^{-\frac{(x-a)^2}{2b^2}}
+$$
+
+\end{document}  
