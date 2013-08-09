@@ -27,9 +27,11 @@ $$
 
 \vspace{-2in}
 %  exp(-((x-a)/b)^2/2)/(b*sqrt(2*pi))
-$$
-f_2(x) = \frac{1}{b \sqrt{2\pi}}e^{-\frac{(x-a)^2}{2b^2}}
-$$
+\begin{verbatim}
+f_2 <- function(x,a,b){
+  exp(-((x-a)/b)^2/2)/(b*sqrt(2*pi))
+}
+\end{verbatim}
 \clearpage
 
 \vspace{-2in}
@@ -42,9 +44,11 @@ $$
 
 \vspace{-2in}
 %  1-exp(-(x/b)^a)
-$$
-f_4(x) = \frac{a}{b}\left(\frac{x}{b}\right)^{a-1} e^{-(x/b)^a}
-$$
+\begin{verbatim}
+f_4 <- function(x,a,b){
+  1-exp(-(x/b)^a)
+}
+\end{verbatim}
 \clearpage
 
 \vspace{-2in}
@@ -56,9 +60,11 @@ $$
 
 \vspace{-2in}
 %   1-(1-x^a)^b
-$$
-f_6(x) =  1-(1-x^a)^b
-$$
+\begin{verbatim}
+f_6 <- function(x,a,b){
+  1-(1-x^a)^b
+}
+\end{verbatim}
 \clearpage
 
 \vspace{-2in}
@@ -71,9 +77,11 @@ $$
 
 \vspace{-2in}
 %   a*b*exp(a*x)*exp(b)*exp(-b*exp(a*x))
-$$
-f_8(x) = abe^{ax}e^{b}e^{-b e^{ax}}
-$$
+\begin{verbatim}
+f_8 <- function(x,a,b){
+  a*b*exp(a*x)*exp(b)*exp(-b*exp(a*x))
+}
+\end{verbatim}
 \clearpage
 
 \vspace{-2in}
