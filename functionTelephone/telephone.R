@@ -74,3 +74,11 @@ for(nn in 1:length(funs)){
   curve(funs[[nn]](x,a=.10,b=2),-10,10,lwd=2)
 }
 
+scramble <- sample(1:length(funs),length(funs),F)
+
+png("scambledFunctions.png",6.5,4,"in",res=400)
+par(bty="n",ann=F,mar=c(4,2,1,1),mfrow=c(2,ceiling(length(funs)/2)))
+for(nn in scramble){
+  curve(funs[[nn]](x,a=.10,b=2),-10,10,lwd=2)
+}
+dev.off()
