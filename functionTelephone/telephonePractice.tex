@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\oddsidemargin 0in
+\evensidemargin 0in
+\topmargin -.5in
+\textwidth=6.5in
+\textheight=9.0in
+
+\title{Function Telephone}
+\author{Pulliam Lab, August 2013}
+\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\subsection*{Function 1:}
+% 1/(1+exp(-(a*x+b)))
+$$
+f_1(x) = \frac{1}{1+e^{-(ax+b)}}
+$$
+
+\subsection*{Function 2:}
+%  exp(-((x-a)/b)^2/2)/(b*sqrt(2*pi))
+$$
+f_2(x) = \frac{1}{b \sqrt{2\pi}}e^{-\frac{(x-a)^2}{2b^2}}
+$$
+
+\subsection*{Function 3:}
+%  1-exp(-(x/b)^a)
+$$
+f_3(x) = 1-e^{-(x/b)^a}
+$$
+
+\subsection*{Function 4:}
+%  (a/b)*(x/b)^(a-1)*exp(-(x/b)^a)
+$$
+f_4(x) = \frac{a}{b}\left(\frac{x}{b}\right)^{a-1} e^{-(x/b)^a}
+$$
+
+\subsection*{Function 5:}
+%  a*b*x^(a-1)*(1-x^a)^(b-1) 
+$$
+f_5(x) =abx^{a-1}(1-x^a)^{b-1}
+$$
+
+\subsection*{Function 6:}
+%   1-(1-x^a)^b
+$$
+f_6(x) =  1-(1-x^a)^b
+$$
+
+\clearpage
+\section*{Additional Practice\\}
+
+\subsection*{Function 7:}
+%   a*(x-b)^2
+$$
+f_7(x) = a(x-b)^2
+$$
+
+\subsection*{Function 8:\\}
+%   a*b*exp(a*x)*exp(b)*exp(-b*exp(a*x))
+%$$
+%f_8(x) = abe^{ax}e^{b}e^{-b e^{ax}}
+%$$
+\begin{verbatim}
+f_8 <- function(x,a,b){
+  a*b*exp(a*x)*exp(b)*exp(-b*exp(a*x))
+}
+\end{verbatim}
+\vspace{1mm}
+
+\subsection*{Function 9:}
+%   a*x/(1+x/b)
+$$
+f_9(x) = \frac{ax}{1+x/b}
+$$
+
+\subsection*{Function 10:\\}
+%   x*exp(a*(1-x/b))
+%$$
+%f_{10} = x e^{a(1-x/b)}
+%$$
+\begin{verbatim}
+f_10 <- function(x,a,b){
+  x*exp(a*(1-x/b))
+}
+\end{verbatim}
+\vspace{1mm}
+
+\subsection*{Function 11:}
+%   a*x/(a*x - (1-a)*b)
+$$
+f_{11}=\frac{ax}{ax-(1-a)b}
+$$
+
+\subsection*{Function 12:\\}
+%   a*x*(1-x/b)
+%$$
+%f_{12}=ax(1-x/b)
+%$$
+\begin{verbatim}
+f_12 <- function(x,a,b){
+  a*x*(1-x/b)
+}
+\end{verbatim}
+
+\clearpage
+\end{document}  
