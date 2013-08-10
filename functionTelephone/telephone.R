@@ -13,16 +13,16 @@ funs$f_2 <- function(x,a,b){
   exp(-((x-a)/b)^2/2)/(b*sqrt(2*pi))
 }
 
-# Weibull probability density function (a,b >0)
-# defined for x >=0 (alt: piecewise)
-funs$f_3 <- function(x,a,b){
-  (a/b)*(x/b)^(a-1)*exp(-(x/b)^a)
-}
-
 # Weibull cumulative density function (a,b >0)
 # defined for x >=0 (alt: piecewise)
-funs$f_4 <- function(x,a,b){
+funs$f_3 <- function(x,a,b){
   1-exp(-(x/b)^a)
+}
+
+# Weibull probability density function (a,b >0)
+# defined for x >=0 (alt: piecewise)
+funs$f_4 <- function(x,a,b){
+  (a/b)*(x/b)^(a-1)*exp(-(x/b)^a)
 }
 
 # Kumaraswamy probability density function (a,b >0)
